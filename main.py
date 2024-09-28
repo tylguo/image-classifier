@@ -4,11 +4,10 @@ import streamlit as st
 
 from PIL import Image
 
-from tensorflow.python.keras import cifar10
+import tensorflow as tf
+from tensorflow.python.keras.datasets import cifar10
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Flatten, Dense
 from tensorflow.python.keras.utils import to_categorical
 
-
-print(tf.__version__)
-#(X_train, y_train), (X_test, y_test) = cifar10.load_data()
+(X_train, y_train), (X_test, y_test) = tf.keras.datasets.cifar10.load_data()
