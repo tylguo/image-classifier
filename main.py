@@ -21,9 +21,9 @@ def main():
         model = tf.keras.models.load_model('cifar10_model.h5')
 
         predictions = model.predict(img_array)
-        cifar10_classes = ['airplane', 'automobile', 'bird', 'cat', 'dog', 'deer', 'frog', 'horse', 'ship', 'truck']
+        cifar10_classes = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
-        fig, ax() = plt.subplot()
+        fig, ax = plt.subplots()
         y_pos = np.arange(len(cifar10_classes))
         ax.barh(y_pos, predictions[0], align='center')
         ax.set_yticks(y_pos)
@@ -31,6 +31,10 @@ def main():
         ax.invert_yaxis()
         ax.set_xlabel('Probability')
         ax.set_title('CIFAR10 Predictions')
+
+        st.pyplot(fig)
     else:
         st.text('You have not uploaded an image yet.')
 
+if __name__ ==  '__main__':
+    main()
