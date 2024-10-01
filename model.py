@@ -33,4 +33,4 @@ model = Sequential([
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.fit(X_train, y_train, batch_size=64, epochs=10, validation_data=(X_val, y_val))
-model.save('cifar10_model.h5')
+model.save('imgClassifier_model.h5')
