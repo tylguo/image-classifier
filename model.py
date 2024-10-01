@@ -19,7 +19,7 @@ y_val = to_categorical(y_val, 10)
 model = Sequential([
     Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
     MaxPooling2D(pool_size=(2, 2)),
-    Dropout(0.25),  # Prevents overfitting  
+    Dropout(0.25),
 
     Conv2D(64, (3, 3), activation='relu'),
     MaxPooling2D(pool_size=(2, 2)),
