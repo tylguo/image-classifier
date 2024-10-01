@@ -31,7 +31,6 @@ def main():
     file = st.file_uploader('Please upload an image', type=['jpg', 'png'])
     if file:
         image = Image.open(file)
-        st.image(image, use_column_width=True)
 
         resized_image = image.resize((32, 32))
         img_array = np.array(resized_image) / 255
@@ -41,6 +40,13 @@ def main():
 
         predictions = model.predict(img_array)
         categories = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+
+        top_prediction_idx = np.argmax(predictions[0])
+        top_prediction_class = categories[top_prediction_idx]
+
+        st.write(f"This image depicts a(n): **{top_prediction_class}**")
+        st.image(image, use_column_width=True)
+
 
         fig, ax = plt.subplots()
         y_pos = np.arange(len(categories))
