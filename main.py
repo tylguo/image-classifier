@@ -7,7 +7,7 @@ from PIL import Image
 
 def main():
     st.title('Image Classifier')
-    st.write('Upload any image that you think fits into one of the following classes and see if the prediction is correct:')
+    st.write('Upload any image that you think fits into one of the following categories and see if the prediction is correct:')
     col1, col2 = st.columns(2)
 
     with col1:
@@ -37,19 +37,19 @@ def main():
         img_array = np.array(resized_image) / 255
         img_array = img_array.reshape((1, 32, 32, 3))
 
-        model = tf.keras.models.load_model('models/cifar10_model.h5')
+        model = tf.keras.models.load_model('models/imgClassifier_model.h5')
 
         predictions = model.predict(img_array)
-        cifar10_classes = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+        categories = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
         fig, ax = plt.subplots()
-        y_pos = np.arange(len(cifar10_classes))
+        y_pos = np.arange(len(categories))
         ax.barh(y_pos, predictions[0], align='center')
         ax.set_yticks(y_pos)
-        ax.set_yticklabels(cifar10_classes)
+        ax.set_yticklabels(categories)
         ax.invert_yaxis()
         ax.set_xlabel('Probability')
-        ax.set_title('CIFAR10 Predictions')
+        ax.set_title('Image Predictions')
 
         st.pyplot(fig)
     else:
