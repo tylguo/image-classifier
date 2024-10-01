@@ -6,8 +6,27 @@ import tensorflow as tf
 from PIL import Image
 
 def main():
-    st.title('Cifar10 Web Classifier')
-    st.write('Upload any image that you think fits into one of these classes and see if the prediction is correct.')
+    st.title('Image Classifier')
+    st.write('Upload any image that you think fits into one of the following classes and see if the prediction is correct:')
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("""
+        * airplane
+        * automobile
+        * bird
+        * cat
+        * deer
+        """)
+
+    with col2:
+        st.markdown("""
+        * dog
+        * frog
+        * horse
+        * ship
+        * truck
+        """)
 
     file = st.file_uploader('Please upload an image', type=['jpg', 'png'])
     if file:
@@ -18,7 +37,7 @@ def main():
         img_array = np.array(resized_image) / 255
         img_array = img_array.reshape((1, 32, 32, 3))
 
-        model = tf.keras.models.load_model('cifar10_model.h5')
+        model = tf.keras.models.load_model('models/cifar10_model.h5')
 
         predictions = model.predict(img_array)
         cifar10_classes = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
