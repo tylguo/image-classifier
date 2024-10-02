@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-
 from PIL import Image
-
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Flatten, Dense, Conv2D, MaxPooling2D, Dropout
